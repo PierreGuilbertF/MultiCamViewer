@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CalibrationParametersDialog</class>
+ <widget class="QDialog" name="CalibrationParametersDialog">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>353</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Geometric Calibration parameters</string>
+  </property>
+  <layout class="QFormLayout" name="formLayout_2">
+   <item row="1" column="0">
+    <widget class="QLabel" name="labelNFeatures">
+     <property name="toolTip">
+      <string>Indicates the maximum number of features</string>
+     </property>
+     <property name="text">
+      <string>NFeatures : </string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QSpinBox" name="nFeaturesSpinBox">
+     <property name="maximum">
+      <number>100000</number>
+     </property>
+     <property name="singleStep">
+      <number>1000</number>
+     </property>
+     <property name="value">
+      <number>50000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="labelNOctaves">
+     <property name="toolTip">
+      <string>The number of layers in each octave. 3 is the value used in D. Lowe paper.
+ The number of octaves is computed automatically from the image resolution</string>
+     </property>
+     <property name="text">
+      <string>NOctaves : </string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QSpinBox" name="nOctavesSpinBox">
+     <property name="maximum">
+      <number>6</number>
+     </property>
+     <property name="value">
+      <number>3</number>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="labelContrastThreshold">
+     <property name="toolTip">
+      <string>The contrast threshold used to filter out weak features in semi-uniform (low-contrast) regions.
+  The larger the threshold, the less features are produced by the detector</string>
+     </property>
+     <property name="text">
+      <string>Contrast Threshold : </string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QDoubleSpinBox" name="contrastThresholdSpinBox">
+     <property name="decimals">
+      <number>5</number>
+     </property>
+     <property name="maximum">
+      <double>500.000000000000000</double>
+     </property>
+     <property name="singleStep">
+      <double>0.005000000000000</double>
+     </property>
+     <property name="value">
+      <double>0.020000000000000</double>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="labelEdgeThreshold">
+     <property name="toolTip">
+      <string>The threshold used to filter out edge-like features. Note that the its meaning is different from the contrastThreshold,
+ i.e. the larger the edgeThreshold, the less features are filtered out (more features are retained).</string>
+     </property>
+     <property name="text">
+      <string>Edge Threshold :  </string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QDoubleSpinBox" name="edgeThresholdSpinBox">
+     <property name="value">
+      <double>20.000000000000000</double>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="labelSigma">
+     <property name="toolTip">
+      <string>The sigma of the Gaussian applied to the input image at the octave #0. If your image
+ is captured with a weak camera with soft lenses, you might want to reduce the number.</string>
+     </property>
+     <property name="text">
+      <string>Sigma : </string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QDoubleSpinBox" name="sigmaSpinBox">
+     <property name="singleStep">
+      <double>0.100000000000000</double>
+     </property>
+     <property name="value">
+      <double>1.600000000000000</double>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="labelRatioMatchingThresh">
+     <property name="toolTip">
+      <string>threshold used to keep a match. If a keypoints match with 2 keypoints with
+ score X1 and X2 and the ratio X1 / X2 &gt; 0.75 the point wont be kept</string>
+     </property>
+     <property name="text">
+      <string>Uniqueness ratio : </string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <widget class="QDoubleSpinBox" name="ratioMatchingThreshSpinBox">
+     <property name="maximum">
+      <double>1.000000000000000</double>
+     </property>
+     <property name="singleStep">
+      <double>0.010000000000000</double>
+     </property>
+     <property name="value">
+      <double>0.700000000000000</double>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="labelParam1">
+     <property name="toolTip">
+      <string>Parameters for finding the fundamental matrix
+ param1 determines the maximum distance between a pixel and its epipolar line
+ to be considered as an inlier. It depends on the noise and the image resolution.
+ Set to 3 for high res images</string>
+     </property>
+     <property name="text">
+      <string>Ransac thresh inlier : </string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <widget class="QDoubleSpinBox" name="param1SpinBox">
+     <property name="decimals">
+      <number>3</number>
+     </property>
+     <property name="maximum">
+      <double>20.000000000000000</double>
+     </property>
+     <property name="singleStep">
+      <double>0.010000000000000</double>
+     </property>
+     <property name="value">
+      <double>0.100000000000000</double>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="0">
+    <widget class="QLabel" name="labelParam2">
+     <property name="toolTip">
+      <string>Specify a desirable level of confidence that the estimated matrix is correct
+ 99% is the recommanded value by opencv documentation</string>
+     </property>
+     <property name="text">
+      <string>Ransac confidence : </string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="1">
+    <widget class="QDoubleSpinBox" name="param2SpinBox">
+     <property name="decimals">
+      <number>5</number>
+     </property>
+     <property name="maximum">
+      <double>1.000000000000000</double>
+     </property>
+     <property name="singleStep">
+      <double>0.000010000000000</double>
+     </property>
+     <property name="value">
+      <double>0.999500000000000</double>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0">
+    <widget class="QLabel" name="labelNbrIm">
+     <property name="toolTip">
+      <string>Number of images used to calibrate the cameras</string>
+     </property>
+     <property name="text">
+      <string>Nbr Image to use : </string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="1">
+    <widget class="QSpinBox" name="nbrImSpinBox">
+     <property name="maximum">
+      <number>500</number>
+     </property>
+     <property name="value">
+      <number>10</number>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="1">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="1">
+    <widget class="QCheckBox" name="exportImageResultCheckBox">
+     <property name="text">
+      <string>Export images result</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="0">
+    <widget class="QLabel" name="labelExportImage">
+     <property name="toolTip">
+      <string>Export the image results</string>
+     </property>
+     <property name="text">
+      <string>Export images  : </string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>CalibrationParametersDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>CalibrationParametersDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
